@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: staylan <staylan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:40:25 by staylan           #+#    #+#             */
-/*   Updated: 2024/12/14 18:22:50 by staylan          ###   ########.fr       */
+/*   Updated: 2024/12/15 17:23:03 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_control(const char c, va_list a)
 	else if (c == 'u')
 		return (ft_putuns(va_arg(a, unsigned int)));
 	else if (c == '%')
-		return (ft_putchar(va_arg(a, int)));
+		return (ft_putchar('%'));
 	else if (c == 'x')
 		return (ft_puthexa(va_arg(a, unsigned int), 'x'));
 	else if (c == 'X')
@@ -33,7 +33,7 @@ int	ft_control(const char c, va_list a)
 	else if (c == 's')
 		return (ft_putstr(va_arg(a, char *)));
 	else if (c == 'p')
-		return (ft_putadr(va_arg(a, unsigned long)));
+		return (ft_putadr(va_arg(a, unsigned long), 'x'));
 	else if (c == 'c')
 		return (ft_putchar(va_arg(a, int)));
 	else

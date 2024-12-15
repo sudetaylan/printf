@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ofuncts.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: staylan <staylan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tukaraca <tukaraca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 17:40:21 by staylan           #+#    #+#             */
-/*   Updated: 2024/12/14 18:10:34 by staylan          ###   ########.fr       */
+/*   Updated: 2024/12/15 17:26:57 by tukaraca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
 	while (str[i])
 	{
 		ft_putchar(str[i]);
@@ -47,7 +49,7 @@ int	ft_putnbr(int nbr)
 	return (j);
 }
 
-int	ft_puthexa(unsigned int a, char c)
+int	ft_puthexa(unsigned long a, char c)
 {
 	int	i;
 
@@ -56,23 +58,23 @@ int	ft_puthexa(unsigned int a, char c)
 		i += ft_puthexa(a / 16, c);
 	if (c == 'x')
 		i += ft_putchar("0123456789abcdef"[a % 16]);
-	if (c == 'X')
+	else if (c == 'X')
 		i += ft_putchar("0123456789ABCDEF"[a % 16]);
 	return (i);
 }
 
-int	ft_putadr(unsigned long u)
+int	ft_putadr(unsigned long u, int c)
 {
 	int	i;
 
 	i = 0;
 	if (u == 0)
-		ft_putstr("(nil)");
-	else
 	{
-		i += ft_putstr("0x");
-		i += ft_puthexa(u, 'x');
+		i += ft_putstr("(nil)");
+		return (i);
 	}
+	i += ft_putstr("0x");
+	i += ft_puthexa(u, c);
 	return (i);
 }
 
